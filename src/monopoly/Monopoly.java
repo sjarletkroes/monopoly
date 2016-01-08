@@ -15,11 +15,12 @@ public class Monopoly {
     public static int SEUIL_NEGO = 250;
     public static int MONTANT_PRIME = 200;
     public static Joueur joueurCourant;
+    public static float PRIX = 10000;
+    public static float LOYER = 600;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
         //** Création des joueurs **
         Joueur J1 = new Joueur("Sjarlet", (float)200.0);
         Joueur J2 = new Joueur("Grace", (float)200.0);
@@ -34,7 +35,10 @@ public class Monopoly {
             //** J1 joue **
                 //*** J1 jette le dé ***
                 Monopoly.jetDe = new LanceDee();
-                //*** Il avance en fonction du dé ***
+                //*** Il se positionne sur un carreau en fonction du dé ***
+                //J1.setSurUnCarreau(P1.getLesCarreaux().get(Integer.parseInt(String.valueOf(Monopoly.jetDe))));
+                J1.setSurUnCarreau(P1.getLesCarreaux().get(Integer.parseInt(String.valueOf(Monopoly.jetDe))));
+                P1.getLesCarreaux().get(posiJ);
             
             //** J2 joue **
                 //*** J2 jette le dé ***
