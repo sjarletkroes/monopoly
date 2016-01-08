@@ -6,7 +6,7 @@
 package monopoly;
 
 /**
- *
+ *ça marche??????
  * @author Goldwing
  */
 public class Monopoly {
