@@ -7,7 +7,6 @@
 package monopoly.carreau;
 import monopoly.Joueur;
 import monopoly.Monopoly;
-import static monopoly.Monopoly.SEUIL_NEGO;
 
 /**
  *

@@ -16,5 +16,10 @@ public class CarreauCoin {
     
     public void action() {
     }
+
+    @Override
+    public String toString() {
+        return "CarreauCoin{" + '}';
+    }
     
 }

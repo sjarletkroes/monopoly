@@ -5,7 +5,6 @@
  */
 package monopoly;
 import java.util.*;
-import monopoly.Monopoly;
 import monopoly.carreau.*;
 /**
  *
@@ -14,11 +13,12 @@ import monopoly.carreau.*;
 public class Plateau {
    // private List<? extends Carreau> lesCarreaux ;
     private List<Object> lesCarreaux ;
-    private List<String> nomMaison = Arrays.asList("Mozar", "Calabre", "La Plata", "Les Taillets", "Alsa", "Gare", "Ile verte", "Condillac", "Estrssin", "Quatre", "Tarantino", "Musée"); 
+    String[] nomMaison = {"Mozar", "Calabre", "La Plata", "Les Taillets", "Alsa", "Gare", "Ile verte", "Condillac", "Estrssin", "Quatre", "Tarantino", "Musée"}; 
+    int[] prixMaison = {1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100}; 
 
     public Plateau(int nbCarreau) {
         this.lesCarreaux = new ArrayList<>();
-        //**    Création du plateau    **
+        //***    Création du plateau    ***
         for(int i=0; i<nbCarreau;i++){
             
             //*** Création du type de carreau ***
@@ -28,26 +28,26 @@ public class Plateau {
             }
             else{
                 
-                //*** On veut un type random différent des coins et au hasar ***
+                //*** On veut un type random différent des coins et au hasard ***
                 Random classRand = new Random();
-                int de = classRand.nextInt((3-1)+1)+1;
+                int de = classRand.nextInt(3);
                 
                 
-                if(de>2){
+                if(de == 0){
                     //*** Maison prix fixe ***
-                    MaisonPrixFixe unCarreau = new MaisonPrixFixe(Monopoly.PRIX,Monopoly.LOYER);
-                    this.lesCarreaux.add(new MaisonPrixFixe(Monopoly.PRIX,Monopoly.LOYER));
+                    MaisonPrixFixe unCarreau = new MaisonPrixFixe(prixMaison[i],prixMaison[i]/100);
+                    this.lesCarreaux.add(unCarreau);
                 }
-                else if(de>1){
+                else if(de == 1){
                     //*** Maison négociable ***
-                        MaisonPrixNegociable unCarreau = new MaisonPrixNegociable(Monopoly.PRIX,Monopoly.LOYER);
-                        this.lesCarreaux.add(unCarreau);
-                    }
-                    else{
-                        //*** Maison Résidence ***
-                        MaisonResidence unCarreau = new MaisonResidence(Monopoly.PRIX,Monopoly.LOYER);
-                        this.lesCarreaux.add(unCarreau);
-                    }
+                    MaisonPrixNegociable unCarreau = new MaisonPrixNegociable(prixMaison[i],prixMaison[i]/100);
+                    this.lesCarreaux.add(unCarreau);
+                }
+                else{
+                    //*** Maison Résidence ***
+                    MaisonResidence unCarreau = new MaisonResidence(prixMaison[i],prixMaison[i]/100);
+                    this.lesCarreaux.add(unCarreau);
+                }
             }  
         }
     }
@@ -60,5 +60,4 @@ public class Plateau {
         this.lesCarreaux = lesCarreaux;
     }
 
-    
 }

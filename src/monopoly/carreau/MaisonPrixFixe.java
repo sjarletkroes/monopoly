@@ -6,8 +6,6 @@
 
 package monopoly.carreau;
 
-import monopoly.carreau.CarreauMaison;
-
 /**
  *
  * @author me

@@ -6,9 +6,7 @@
 package monopoly;
 
 /**
- *ça marche??????
- * toujours????????
- * encore??????
+ * 
  * @author Goldwing
  */
 public class Monopoly {
@@ -24,6 +22,7 @@ public class Monopoly {
      */
     public static void main(String[] args) {
         //** Création des joueurs **
+        
         Joueur J1 = new Joueur("Sjarlet", (float)200.0);
         Joueur J2 = new Joueur("Grace", (float)200.0);
         
