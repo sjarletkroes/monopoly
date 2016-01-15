@@ -6,7 +6,8 @@
 
 package monopoly.carreau;
 
-import monopoly.LanceDee;
+import monopoly.LancerDe;
+import monopoly.Monopoly;
 
 /**
  *
@@ -14,13 +15,13 @@ import monopoly.LanceDee;
  */
 public class MaisonResidence extends CarreauMaison {
 
-    public MaisonResidence(float prix, float loyer) {
-        super(prix, loyer);
+    public MaisonResidence(int numero, String nom, float prix, float loyer) {
+        super(numero, nom, prix, loyer);
     }
 
     @Override
     public float getLoyer() {
-        return super.getLoyer()*LanceDee.lanceDe();
+        return super.getLoyer()*Monopoly.jetDe.getValeurDe();
     }
 
     @Override

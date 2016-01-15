@@ -7,14 +7,24 @@
 package monopoly.carreau;
 
 import monopoly.Joueur;
+import monopoly.Monopoly;
 
 /**
  *
  * @author me
  */
-public class CarreauCoin {
+public class CarreauCoin extends Carreau {
+
+    public CarreauCoin(int numero, String nom) {
+        super(numero, nom);
+    }
     
     public void action() {
+        if (this.getNumero() == 0) {
+            Monopoly.joueurCourant.setArgentDisponible(Monopoly.joueurCourant.getArgentDisponible() + Monopoly.MONTANT_PRIME);
+            System.out.println("Ajout prime: " + Monopoly.joueurCourant.getArgentDisponible());
+        }
+        else System.out.println("Carreau coin: " + this.getNom());
     }
 
     @Override

@@ -12,8 +12,8 @@ package monopoly.carreau;
  */
 public class MaisonPrixFixe extends CarreauMaison{
 
-    public MaisonPrixFixe(float prix, float loyer) {
-        super(prix, loyer);
+    public MaisonPrixFixe(int numero, String nom, float prix, float loyer) {
+        super(numero, nom, prix, loyer);
     }
     
 }

@@ -24,19 +24,33 @@ public abstract class Carreau {
         return numero;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
     
     public abstract void action();
     
     public void actionCarreau() {
-        Monopoly.joueurCourant.setArgentDisponible(Monopoly.joueurCourant.getArgentDisponible() + Monopoly.MONTANT_PRIME);
-        action();
+        System.out.println("Initial: " + Monopoly.joueurCourant.getArgentDisponible());
+        if (Monopoly.joueurCourant.getArgentDisponible() > 0) {
+            action();
+        }
+        if (Monopoly.joueurCourant.getArgentDisponible() < 0) {
+            System.out.println("FAUCHE!!!!!");
+        }
+        System.out.println("Après action: " + Monopoly.joueurCourant.getArgentDisponible());
     }
 
     @Override
     public String toString() {
-        return "Carreau{" + "numero=" + numero + ", nom=" + nom + '}';
+        return "Carreau{" + "numero=" + numero + ",\n\tnom=" + nom + '}';
     }
 }

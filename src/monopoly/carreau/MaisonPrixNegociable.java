@@ -14,8 +14,8 @@ import monopoly.Monopoly;
  */
 public class MaisonPrixNegociable extends CarreauMaison {
 
-    public MaisonPrixNegociable(float prix, float loyer) {
-        super(prix, loyer);
+    public MaisonPrixNegociable(int numero, String nom, float prix, float loyer) {
+        super(numero, nom, prix, loyer);
     }
 
     @Override

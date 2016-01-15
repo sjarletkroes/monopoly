@@ -5,13 +5,15 @@
  */
 package monopoly;
 
+import monopoly.carreau.Carreau;
+
 /**
  * 
  * @author Goldwing
  */
 public class Monopoly {
-    private static int posiJ = 0;
-    private static LanceDee jetDe;
+    private static int POSITION_INITIALE = 0;
+    public static LancerDe jetDe;
     public static int SEUIL_NEGO = 250;
     public static int MONTANT_PRIME = 200;
     public static Joueur joueurCourant;
@@ -21,28 +23,47 @@ public class Monopoly {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //** Création des joueurs **
         
-        Joueur J1 = new Joueur("Sjarlet", (float)200.0);
-        Joueur J2 = new Joueur("Grace", (float)200.0);
+        //** Création des joueurs **
+        System.out.println("Création des joueurs");
+        Joueur J1 = new Joueur("Sjarlet", (float)20000.0);
+        Joueur J2 = new Joueur("Grace", (float)20000.0);
         
         //** Création du plateau **
+        System.out.println("Création du plateau");
         Plateau P1 = new Plateau(12);
         
-        //** On considère pour le moment que les joueurs ne font qu'un tour **
-        //** Le jeu s'arrête quand l'un des deux à fini le tour **
-        //** Deux joueurs peuvent être sur le même carreau **
-        while(P1.getLesCarreaux().size() >= Monopoly.posiJ){
+        // Initialisation de la position des joueurs
+        System.out.println("Initialisation de la position des joueurs");
+        J1.setPosition((Carreau) P1.getCarreauPosition(POSITION_INITIALE));
+        J2.setPosition((Carreau) P1.getCarreauPosition(POSITION_INITIALE));
+        
+        //** Déroulement du jeu **
+        Monopoly.jetDe = new LancerDe();
+        int tour = 1;
+        while(J1.getArgentDisponible() > 0 && J2.getArgentDisponible() > 0){
+            
             //** J1 joue **
-                //*** J1 jette le dé ***
-                Monopoly.jetDe = new LanceDee();
-                //*** Il se positionne sur un carreau en fonction du dé ***
-                //J1.setSurUnCarreau(P1.getLesCarreaux().get(Integer.parseInt(String.valueOf(Monopoly.jetDe))));
-                J1.setSurUnCarreau(P1.getLesCarreaux().get(Integer.parseInt(String.valueOf(Monopoly.jetDe))));
-                P1.getLesCarreaux().get(posiJ);
+            joueurCourant = J1;
+            System.out.println("\nJoueur courant: " + J1.getNom() + "\n\tnombre de proproiétés acquises: " + J1.getListeMaisons().size());
+            //*** J1 jette le dé ***
+            jetDe.setValeurDe();
+            System.out.println(jetDe.toString());
+            //*** Il se positionne sur un carreau en fonction du dé ***
+            J1.avancer(P1, jetDe.getValeurDe());
+            J1.getPosition().actionCarreau();
             
             //** J2 joue **
-                //*** J2 jette le dé ***
+            joueurCourant = J2;
+            System.out.println("\nJoueur courant: " + J2.getNom() + "\n\tnombre de proproiétés acquises: " + J1.getListeMaisons().size());
+            //*** J2 jette le dé ***
+            jetDe.setValeurDe();
+            System.out.println(jetDe.toString());
+            //*** Il se positionne sur un carreau en fonction du dé ***
+            J2.avancer(P1, jetDe.getValeurDe());
+            J2.getPosition().actionCarreau();
+            
+            tour ++;
         }
     }
     

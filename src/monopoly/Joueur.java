@@ -13,12 +13,13 @@ import java.util.*;
 public class Joueur {
     private String nom;
     private float argentDisponible; 
-    private ArrayList<CarreauMaison> listeMaisons;
+    private final ArrayList<CarreauMaison> listeMaisons;
+    private Carreau position;
 
     public Joueur(String nom, float argentDisponible) {
         this.nom = nom;
         this.argentDisponible = argentDisponible;
-        this.listeMaisons = null;
+        this.listeMaisons = new ArrayList<>();
     }
 
     public void setNom(String nom) {
@@ -27,6 +28,10 @@ public class Joueur {
 
     public void setArgentDisponible(float argentDisponible) {
         this.argentDisponible = argentDisponible;
+    }
+
+    public void setPosition(Carreau position) {
+        this.position = position;
     }
 
     public void addMaison(CarreauMaison maison) {
@@ -43,6 +48,19 @@ public class Joueur {
 
     public ArrayList<CarreauMaison> getListeMaisons() {
         return listeMaisons;
+    }
+
+    public Carreau getPosition() {
+        return position;
+    }
+    
+    public void avancer(Plateau p, int valeurDe) {
+        if ((this.position.getNumero() + valeurDe) < p.getSize()) {
+            this.setPosition(p.getCarreauPosition(this.position.getNumero() + valeurDe));
+        }
+        else {
+            this.setPosition(p.getCarreauPosition(this.position.getNumero() + valeurDe - p.getSize()));
+        }
     }
 
     @Override
