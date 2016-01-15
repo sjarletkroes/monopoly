@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package monopoly;
+package monopoly.joueur;
 import monopoly.carreau.*;
 import java.util.*;
+import monopoly.Plateau;
 /**
  *
  * @author Goldwing
@@ -61,6 +62,15 @@ public class Joueur {
         else {
             this.setPosition(p.getCarreauPosition(this.position.getNumero() + valeurDe - p.getSize()));
         }
+    }
+    
+    public String stringListeMaisons() {
+        String s = "{ ";
+        for(CarreauMaison c : listeMaisons) {
+            s += " " + c.getNom() + " "; 
+        }
+        s += " }";
+        return s;
     }
 
     @Override

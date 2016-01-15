@@ -5,6 +5,8 @@
  */
 package monopoly;
 
+import monopoly.affichage.Fenetre;
+import monopoly.joueur.Joueur;
 import monopoly.carreau.Carreau;
 
 /**
@@ -14,15 +16,15 @@ import monopoly.carreau.Carreau;
 public class Monopoly {
     private static int POSITION_INITIALE = 0;
     public static LancerDe jetDe;
-    public static int SEUIL_NEGO = 250;
+    public static int SEUIL_NEGO = 1000;
     public static int MONTANT_PRIME = 200;
     public static Joueur joueurCourant;
-    public static float PRIX = 10000;
-    public static float LOYER = 600;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Fenetre fen = new Fenetre();
         
         //** Création des joueurs **
         System.out.println("Création des joueurs");
@@ -40,12 +42,13 @@ public class Monopoly {
         
         //** Déroulement du jeu **
         Monopoly.jetDe = new LancerDe();
-        int tour = 1;
         while(J1.getArgentDisponible() > 0 && J2.getArgentDisponible() > 0){
             
             //** J1 joue **
             joueurCourant = J1;
-            System.out.println("\nJoueur courant: " + J1.getNom() + "\n\tnombre de proproiétés acquises: " + J1.getListeMaisons().size());
+            System.out.println("\nJoueur courant: " + J1.getNom() + 
+                    "\n\tnombre de propriétés acquises: " + J1.getListeMaisons().size() + 
+                    "\n\tnoms: " + J1.stringListeMaisons());
             //*** J1 jette le dé ***
             jetDe.setValeurDe();
             System.out.println(jetDe.toString());
@@ -55,15 +58,15 @@ public class Monopoly {
             
             //** J2 joue **
             joueurCourant = J2;
-            System.out.println("\nJoueur courant: " + J2.getNom() + "\n\tnombre de proproiétés acquises: " + J1.getListeMaisons().size());
+            System.out.println("\nJoueur courant: " + J2.getNom() + 
+                    "\n\tnombre de propriétés acquises: " + J2.getListeMaisons().size() +
+                    "\n\tnoms: " + J2.stringListeMaisons());
             //*** J2 jette le dé ***
             jetDe.setValeurDe();
             System.out.println(jetDe.toString());
             //*** Il se positionne sur un carreau en fonction du dé ***
             J2.avancer(P1, jetDe.getValeurDe());
             J2.getPosition().actionCarreau();
-            
-            tour ++;
         }
     }
     

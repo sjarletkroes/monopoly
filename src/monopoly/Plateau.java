@@ -13,7 +13,7 @@ import monopoly.carreau.*;
 public class Plateau {
    // private List<? extends Carreau> lesCarreaux ;
     private ArrayList<Carreau> lesCarreaux ;
-    String[] nomMaison = {"Mozar", "Calabre", "La Plata", "Les Taillets", "Alsa", "Gare", "Ile verte", "Condillac", "Estrssin", "Quatre", "Tarantino", "Musée"}; 
+    String[] nomMaison = {"Mozar", "Calabre", "La Plata", "Les_Taillets", "Alsa", "Gare", "Ile_verte", "Condillac", "Estrssin", "Quatre", "Tarantino", "Musée"}; 
     int[] prixMaison = {1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100}; 
 
     public Plateau(int nbCarreau) {
@@ -66,6 +66,11 @@ public class Plateau {
 
     public void setLesCarreaux(ArrayList<Carreau> lesCarreaux) {
         this.lesCarreaux = lesCarreaux;
+    }
+
+    @Override
+    public String toString() {
+        return "Plateau{" + "lesCarreaux=" + lesCarreaux + '}';
     }
 
 }

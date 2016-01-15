@@ -6,7 +6,7 @@
 
 package monopoly.carreau;
 
-import monopoly.Joueur;
+import monopoly.joueur.Joueur;
 import monopoly.Monopoly;
 
 /**

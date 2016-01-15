@@ -5,7 +5,7 @@
  */
 
 package monopoly.carreau;
-import monopoly.Joueur;
+import monopoly.joueur.Joueur;
 import monopoly.Monopoly;
 
 /**
@@ -75,6 +75,7 @@ public class CarreauMaison extends Carreau {
                 System.out.println(Monopoly.joueurCourant.getNom() + " ne peut pas payer la totalité du loyer et a donc PERDU!!!!!!!");
             }
         }
+        else System.out.println(Monopoly.joueurCourant.getNom() + " est chez lui/elle");
     }
 
     @Override

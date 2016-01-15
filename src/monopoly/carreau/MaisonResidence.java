@@ -6,7 +6,6 @@
 
 package monopoly.carreau;
 
-import monopoly.LancerDe;
 import monopoly.Monopoly;
 
 /**
